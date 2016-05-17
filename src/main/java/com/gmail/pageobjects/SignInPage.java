@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by David.Carvalho on 16-05-2016.
  */
@@ -20,6 +22,11 @@ public class SignInPage {
     }
 
     public void enterPassword(WebDriver driver, String password) {
+
+        //wait
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='Passwd']")));
+
         WebElement passwdTxtBox = driver.findElement(By.xpath("//*[@id='Passwd']"));
         passwdTxtBox.clear();
         passwdTxtBox.sendKeys(password);
@@ -37,6 +44,10 @@ public class SignInPage {
         //verify sign in
         WebDriverWait wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='fv']")));
+
+        //wait for page load
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+
         return PageFactory.initElements(driver,InboxPage.class);
     }
 
