@@ -1,6 +1,6 @@
-package com.gmail.util;
+package com.appframework.util;
 
-import com.gmail.pageobjects.SignInPage;
+import com.appframework.pageobjects.SignInPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

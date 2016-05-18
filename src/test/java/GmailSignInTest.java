@@ -1,17 +1,16 @@
-import com.gmail.pageobjects.InboxPage;
-import com.gmail.pageobjects.SignInPage;
-import com.gmail.util.WebUtils;
+import com.appframework.categories.Critical;
+import com.appframework.categories.Major;
+import com.appframework.pageobjects.InboxPage;
+import com.appframework.pageobjects.SignInPage;
+import com.appframework.util.WebUtils;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -20,9 +19,19 @@ import java.util.concurrent.TimeUnit;
 public class GmailSignInTest {
 
     //Instantiate
-    private WebDriver driver = new FirefoxDriver();
-    private WebDriverWait wait = new WebDriverWait(driver,20);
+    private WebDriver driver;
 
+    @Before
+    public void setDriver(){
+        String browserName = System.getenv("browser");
+        if (browserName!=null && browserName.equalsIgnoreCase("chrome")){
+            driver = new ChromeDriver();
+        } else {
+            driver = new FirefoxDriver();
+        }
+    }
+
+    @Category({Critical.class})
     @Test
     public void gmailLoginSuccessful(){
 
@@ -51,6 +60,7 @@ public class GmailSignInTest {
         Assert.assertTrue("Sign in button should exist",signInPage.isSignInExist(driver));
     }
 
+    @Category({Major.class})
     @Test
     public void gmailSendEmail() {
         //1.Sign In

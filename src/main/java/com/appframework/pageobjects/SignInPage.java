@@ -1,13 +1,9 @@
-package com.gmail.pageobjects;
+package com.appframework.pageobjects;
 
-import com.gmail.util.WebUtils;
-import org.junit.Assert;
+import com.appframework.util.WebUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
