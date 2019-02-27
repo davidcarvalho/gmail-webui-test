@@ -39,13 +39,13 @@ public class GmailSignInTest {
         SignInPage signInPage = WebUtils.goToSignInPage(driver);
 
         //username
-        signInPage.enterUsername(driver,"davidcarvalho8421@gmail.com");
+        signInPage.enterUsername(driver,"@gmail.com");
 
         //Next
         signInPage.clickNext(driver);
 
         //password
-        signInPage.enterPassword(driver,"$hrek8421");
+        signInPage.enterPassword(driver,"");
 
         //click sign in
         InboxPage inboxPage = signInPage.clickSignIn(driver);
